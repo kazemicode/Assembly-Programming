@@ -46,7 +46,7 @@ loop:
         cmp   r4, '9            @ have gone past max numeral?
         ble   loop              @ false, loop again
         mov   r0, 0             @ true, return 0
-        add   sp, sp            @ deallocate local var mem
+        add   sp, sp, local     @ deallocate local var mem
         ldr   r4, [sp, 4]       @ restore r4
         ldr   fp, [sp, 8]       @ restore fp
         ldr   lr, [sp, 12]      @ restore lr
