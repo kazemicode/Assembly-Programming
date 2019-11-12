@@ -53,3 +53,5 @@ allDone:
     ldr   r5, [sp, 4]   @ restore r5
     ldr   fp, [sp, 8]   @ restore fp
     ldr   lr, [sp, 12]  @ restore lr
+    add   sp, sp, 16    @ restore sp
+    bx    lr            @ return
