@@ -12,7 +12,7 @@
     .section  .rodata
     .align    2
 prompt:
-    .asciz    "Enter a string: "
+    .asciz    "Enter a string: \n"
 
 @ Code start
     .text
@@ -34,8 +34,11 @@ main:
     ldr   r0, promptAddr    @ prompt user
     bl    writeStr          @ call function
 
+    @ After writeStr finished executing
+    mov   r0, r4        @ get user input
+    bl    readLn
 
-@ After writeStr finished executing
+    @ After readLn finished executing  
     mov   r0, r4        @ free heap memory
     bl    free
 
