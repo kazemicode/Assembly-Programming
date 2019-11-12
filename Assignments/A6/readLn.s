@@ -47,8 +47,8 @@ whileLoop:
     cmp   r3, LF        @ End of input?
     beq   allDone       @ Yes? new line, done.
 
-    mov   r4, r4, 1     @ No? Increment pointer var
-    mov   r5, r5, 1     @ Increment counter var
+    add   r4, r4, 1     @ No? Increment pointer var
+    add   r5, r5, 1     @ Increment counter var
 
     mov   r0, STDIN     @ read from keyboard
     mov   r1, r4        @ address of next char
