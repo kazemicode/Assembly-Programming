@@ -35,7 +35,7 @@ writeStr:
 
 whileLoop:
     ldrb  r3, [r4]      @ get a char from r4
-    cmp   r4, NUL       @ Empty string?
+    cmp   r3, NUL       @ Empty string?
     beq   allDone       @ Yes? End of string, done.
 
     mov   r0, STDOUT    @ No? Write char to stdout
