@@ -39,7 +39,7 @@ main:
     bl    readLn
 
     @ After readLn finished executing
-    ldr   r0, r4            @ echo user input
+    mov   r0, r4            @ echo user input
     bl    writeStr          @ call function
 
     @ After second call to writeStr finished executing
