@@ -38,7 +38,11 @@ main:
     mov   r0, r4        @ get user input
     bl    readLn
 
-    @ After readLn finished executing  
+    @ After readLn finished executing
+    ldr   r0, r4            @ echo user input
+    bl    writeStr          @ call function
+
+    @ After second call to writeStr finished executing
     mov   r0, r4        @ free heap memory
     bl    free
 
