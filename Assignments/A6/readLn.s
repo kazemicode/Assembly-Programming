@@ -25,7 +25,7 @@
     .global readLn
     .type   readLn, %function
 
-writeStr:
+readLn:
     sub   sp, sp, 16    @ space for saving registers
     str   r4, [sp, 0]   @ save r4 to stack
     str   r5, [sp, 4]   @ save r5 to stack
