@@ -9,7 +9,7 @@
     .syntax unified
 
 @ Constant data
-    .equ      nBytes, 50 @ amount of memory for string
+    .equ      nBytes, 5 @ amount of memory for string
     .section  .rodata
     .align    2
 prompt:
