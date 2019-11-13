@@ -15,6 +15,9 @@
 prompt:
     .asciz    "Enter a string: \n"
 
+newline:
+    .asciz    "\n"
+
 @ Code start
     .text
     .align  2
@@ -45,6 +48,10 @@ main:
     bl    writeStr          @ call function
 
     @ After second call to writeStr finished executing
+    ldr   r0, newline       @ prompt user
+    bl    writeStr          @ call function
+
+    @ After new line is printed
     mov   r0, r4        @ free heap memory
     bl    free
 
