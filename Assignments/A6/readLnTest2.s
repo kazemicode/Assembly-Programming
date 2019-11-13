@@ -50,7 +50,7 @@ main:
 
     @ After second call to writeStr finished executing
     mov   r0, STDOUT        @ write to screen
-    ldr   r1, newline       @ address of newline char
+    ldr   r1, newlineAddr       @ address of newline char
     mov   r2, 1             @ write one byte
     bl    write             @ call function
 
@@ -67,3 +67,6 @@ main:
 
 promptAddr:
     .word   prompt    @ address of myString
+
+newlineAddr:
+    .word   newline   @ address of myString
