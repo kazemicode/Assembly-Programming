@@ -9,6 +9,7 @@
     .syntax unified
 
 @ Constant data
+    .equ      STDOUT, 1
     .equ      nBytes, 5 @ amount of memory for string
     .section  .rodata
     .align    2
@@ -48,8 +49,10 @@ main:
     bl    writeStr          @ call function
 
     @ After second call to writeStr finished executing
-    ldr   r0, newline       @ prompt user
-    bl    writeStr          @ call function
+    mov   r0, STDOUT        @ write to screen
+    ldr   r1, newline       @ address of newline char
+    mov   r2, 1             @ write one byte
+    bl    write             @ call function
 
     @ After new line is printed
     mov   r0, r4        @ free heap memory
