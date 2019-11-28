@@ -65,7 +65,7 @@ bge done      @ No? Done.
 bl checkPrimeNumber @ Yes? Branch to checkPrimeNumber
 @ check flag
 mov r0, 1     @ STDOUT
-mov r6, r1    @ move current n (i) to r1 to print if prime
+mov r6, [r1]    @ move current n (i) to r1 to print if prime
 cmp r8, 1     @ Is flag set?
 beq pflag     @ Yes? print the value
 add r6, r6, 1 @ i++
