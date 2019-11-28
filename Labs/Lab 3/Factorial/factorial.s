@@ -28,11 +28,11 @@ b loop
 
 loop:
 cmp r4, #1
-beq done
+beq done              @ factorial successfully computed
 sub r4, r4, #1
-umull r5, r0, r4, r5
-cmp r0, #1
-beq overflow
+umull r5, r0, r5, r4  @ r0 holds flag value
+cmp r0, #0            @ overflow occurred
+bne overflow
 b loop
 
 
