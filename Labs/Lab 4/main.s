@@ -65,6 +65,7 @@ bge done      @ No? Done.
 bl checkPrimeNumber @ Yes? Branch to checkPrimeNumber
 @ check flag
 
+add r6, r6, 1 @ i++
 b loop        @ loop again
 
 done:
