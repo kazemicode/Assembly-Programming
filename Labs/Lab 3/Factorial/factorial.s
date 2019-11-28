@@ -3,8 +3,8 @@
 .fpu neon-fp-armv8
 .syntax unified
 .data
-output: .asciz "Factorial of %d is: %d"
-omsg: .asciz "Overflow occurred."
+output: .asciz "Factorial of %d is: %d \n"
+omsg: .asciz "Overflow occurred. \n"
 
 
 @ Program code
@@ -22,7 +22,7 @@ add fp, sp, #4
 @ r5 will be final value
 @ r6 untouched user input
 
-mov r5, r6
+mov r6, r4
 mov r5, r4
 b loop
 
