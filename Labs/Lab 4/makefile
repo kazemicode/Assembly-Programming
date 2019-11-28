@@ -1,4 +1,4 @@
-fibonacci: main.o checkPrimeNumber.o
+prime: main.o checkPrimeNumber.o
 	gcc -o fibonacci main.o checkPrimeNumber.o
 
 main.o: main.s
