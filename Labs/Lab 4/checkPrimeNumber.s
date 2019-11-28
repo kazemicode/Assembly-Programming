@@ -19,7 +19,7 @@ add fp, sp, #4
 
 mov r7, 2       @ j = 2
 mov r8, 1       @ flag = 1
-udiv r9, r6, 2  @ n / 2
+udiv r9, r6, r7  @ n / 2
 
 @ r4 has user input (n1)
 @ r5 has user input (n2)
