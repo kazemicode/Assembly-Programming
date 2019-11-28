@@ -3,7 +3,6 @@
 .fpu neon-fp-armv8
 .syntax unified
 .data
-output: .asciz "%d "
 
 
 @ Program code

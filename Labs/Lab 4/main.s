@@ -7,6 +7,7 @@ prompt1: .asciz "Enter first integer: "
 prompt2: .asciz "Enter second integer: "
 input: .asciz "%d"
 output: .asciz "The prime numbers between %d and %d are: \n"
+results: .asciz "%d "
 
 @ Program code
 .text
@@ -64,15 +65,14 @@ cmp r6, r5    @ i < n2?
 bge done      @ No? Done.
 bl checkPrimeNumber @ Yes? Branch to checkPrimeNumber
 @ check flag
-ldr r0, =input
+ldr r0, =results
 mov r1, r6    @ move current n (i) to r1 to print if prime
 cmp r8, 1     @ Is flag set?
-beq pflag     @ Yes? print the value
+bleq printf     @ Yes? print the value
 add r6, r6, 1 @ i++
 b loop        @ loop again
 
-pflag:
-bl printf
+
 
 done:
 sub sp, fp, #4
