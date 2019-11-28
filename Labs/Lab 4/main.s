@@ -8,6 +8,7 @@ prompt2: .asciz "Enter second integer: "
 input: .asciz "%d"
 output: .asciz "The prime numbers between %d and %d are: \n"
 results: .asciz "%d "
+newline: .asciz "/n"
 
 @ Program code
 .text
@@ -72,8 +73,8 @@ bleq printf     @ Yes? print the value
 add r6, r6, 1 @ i++
 b loop        @ loop again
 
-
-
 done:
+ldr r0, =newline
+bl printf
 sub sp, fp, #4
 pop {fp, pc}
