@@ -1,16 +1,12 @@
-@ need two inputs
-@ counter var for loop
-@ prime number flag
-
-
 @ Define my Raspberry pi
 .cpu cortex-a53
 .fpu neon-fp-armv8
 .syntax unified
 .data
 prompt1: .asciz "Enter first integer: "
-input: .asciz "%d"
 prompt2: .asciz "Enter second integer: "
+input: .asciz "%d"
+output: .asciz "The prime numbers between %d and %d are: \n"
 
 @ Program code
 .text
@@ -18,13 +14,20 @@ prompt2: .asciz "Enter second integer: "
 .global main
 .type main, %function
 
+@ r4 has user input (n1)
+@ r5 has user input (n2)
+@ r6 is i (param n used in checkPromptNumber)
+@ r7 is j
+@ r8 is flag
+
 main:
 
 push {fp, lr}
 add fp, sp, #4
+
 @ print prompt for user
 mov r10, lr
-ldr r0, =prompt
+ldr r0, =prompt1
 bl printf
 
 @ call scanf to read user input
@@ -36,8 +39,28 @@ bl scanf @ sp contain the input
 @ inp stored in r4
 ldr r4, [sp]
 
+ldr r0, =prompt2
+bl printf
+@ call scanf to read user input
+sub sp, sp, #4
+ldr r0, =input
+mov r1, sp
+bl scanf @ sp contain the input
+@ inp stored in r5
+ldr r5, [sp]
 
 
-bl factorial
+@printf("Prime number between %d and %d are: ", n1, n2)
+mov r1, r4 @ n1
+mov r2, r5 @ n2
+ldr r0, =output
+bl printf
+
+add r6, r4, 1 @ i = n1 + 1
+cmp r6, r5    @ i < n2?
+bge done      @ No? Done.
+bl checkPrimeNumber @ Yes? Branch to checkPrimeNumber
+
+done:
 sub sp, fp, #4
 pop {fp, pc}
