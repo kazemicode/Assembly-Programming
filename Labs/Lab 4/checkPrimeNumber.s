@@ -22,7 +22,7 @@ udiv r9, r6, r7  @ n / 2
 
 @ r4 has user input (n1)
 @ r5 has user input (n2)
-@ r6 has n (number between n1 and n2 inclusive)
+@ r6 has n (number between n1 and n2)
 @ r7 is j
 @ r8 is flag
 
@@ -36,7 +36,7 @@ cmp r7, r9            @ is j <= n/2 ?
 bgt done              @ No? Done, flag still 1
 @ modulus             @ Yes? Check if divisible by j
 udiv r9, r6, r7       @ x = n / j
-mul r3, r9, r6        @ r3 = x * j
+mul r3, r9, r7        @ r3 = x * j
 sub r2, r6, r3        @ n - (x * j)
 cmp r2, 0             @ n%j == 0?
 beq setflag           @ Yes? set flag to 0, indicating not prime
