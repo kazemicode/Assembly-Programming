@@ -24,9 +24,9 @@ main:
 
 push {fp, lr}
 add fp, sp, #4
+mov r10, lr
 
 @ print prompt for user
-mov r10, lr
 ldr r0, =prompt1
 bl printf
 
@@ -35,12 +35,13 @@ sub sp, sp, #4
 ldr r0, =input
 mov r1, sp
 bl scanf @ sp contain the input
-
 @ inp stored in r4
 ldr r4, [sp]
 
+@ print prompt for user
 ldr r0, =prompt2
 bl printf
+
 @ call scanf to read user input
 sub sp, sp, #4
 ldr r0, =input
@@ -57,9 +58,17 @@ ldr r0, =output
 bl printf
 
 add r6, r4, 1 @ i = n1 + 1
+
+loop:
 cmp r6, r5    @ i < n2?
 bge done      @ No? Done.
 bl checkPrimeNumber @ Yes? Branch to checkPrimeNumber
+@ check flag
+mov r6, r1    @ move current n (i) to r1 to print if prime
+cmp r8, 1     @ Is flag set?
+beq bl printf @ Yes? print the value
+add r6, r6, 1 @ i++
+b loop        @ loop again
 
 done:
 sub sp, fp, #4
