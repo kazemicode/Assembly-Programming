@@ -45,10 +45,10 @@ b loop                @ No? Loop again after incrementing j
 
 setflag:
 mov r8, 0             @ flag = 0
-mov r0, r8
 b done
 
 done:
+mov r0, r8           @ pass flag back to caller
 sub sp, fp, #4
 pop {fp, pc}
 bx      lr              @ back to caller

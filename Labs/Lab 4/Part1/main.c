@@ -10,7 +10,6 @@ int main()
   for(i=n1+1; i<n2; ++i) {
     // i is a prime number, flag will be equal to 1
     flag = checkPrimeNumber(i);
-    printf("%d ",flag);
     if(flag == 1)
       printf("%d ",i);
     } return 0;
