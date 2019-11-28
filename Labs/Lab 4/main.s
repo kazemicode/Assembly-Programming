@@ -64,7 +64,7 @@ cmp r6, r5    @ i < n2?
 bge done      @ No? Done.
 bl checkPrimeNumber @ Yes? Branch to checkPrimeNumber
 @ check flag
-mov r0, =input 
+ldr r0, =input
 mov r1, r6    @ move current n (i) to r1 to print if prime
 cmp r8, 1     @ Is flag set?
 beq pflag     @ Yes? print the value
