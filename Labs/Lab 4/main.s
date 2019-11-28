@@ -8,7 +8,7 @@ prompt2: .asciz "Enter second integer: "
 input: .asciz "%d"
 output: .asciz "The prime numbers between %d and %d are: \n"
 results: .asciz "%d "
-newline: .asciz "/n"
+newline: .asciz "\n"
 
 @ Program code
 .text
