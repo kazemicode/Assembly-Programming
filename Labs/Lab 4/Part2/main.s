@@ -77,6 +77,8 @@ printresults:
 ldr r0, =results
 mov r1, r6    @ move current n (i) to r1 to print if prime
 bleq printf     @ Yes? print the value
+add r6, r6, 1 @ i++
+b loop        @ loop again
 
 done:
 ldr r0, =newline
