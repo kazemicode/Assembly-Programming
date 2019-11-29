@@ -13,6 +13,6 @@ int main()
     if(flag == 1)
       printf("%d ",i);
     }
-    printf("\n";
+    printf("\n");
      return 0;
   }
