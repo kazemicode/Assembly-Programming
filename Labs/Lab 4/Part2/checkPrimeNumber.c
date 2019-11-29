@@ -1,6 +1,5 @@
 #include <stdio.h>
 int checkPrimeNumber(int n);
-int main()
 
 // user-defined function to check prime number
 int checkPrimeNumber(int n)
