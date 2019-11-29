@@ -4,6 +4,7 @@ int checkPrimeNumber(int n);
 // user-defined function to check prime number
 int checkPrimeNumber(int n)
 {
+  printf("%d ", n);
   int j, flag = 1;
   for(j=2; j <= n/2; ++j)
   {
