@@ -64,14 +64,19 @@ add r6, r4, 1 @ i = n1 + 1
 loop:
 cmp r6, r5    @ i < n2?
 bge done      @ No? Done.
+mov r0, r6    @ pass argument to checkPrimeNumber
 bl checkPrimeNumber @ Yes? Branch to checkPrimeNumber
 @ check flag
-ldr r0, =results
-mov r1, r6    @ move current n (i) to r1 to print if prime
-cmp r8, 1     @ Is flag set?
-bleq printf     @ Yes? print the value
+cmp r0, 1     @ Is flag set?
+beq printresults
 add r6, r6, 1 @ i++
 b loop        @ loop again
+
+
+printresults:
+ldr r0, =results
+mov r1, r6    @ move current n (i) to r1 to print if prime
+bleq printf     @ Yes? print the value
 
 done:
 ldr r0, =newline
