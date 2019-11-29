@@ -12,5 +12,7 @@ int main()
     flag = checkPrimeNumber(i);
     if(flag == 1)
       printf("%d ",i);
-    } return 0;
+    }
+    printf("\n";
+     return 0;
   }
