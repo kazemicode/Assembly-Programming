@@ -1,5 +1,5 @@
-lower: lowerCase.o toLower.o readLn.o writeStr.o
-	gcc -o lower lowerCase.o toLower.o readLn.o writeStr.o
+hexConvert: main.o hexToInt.o writeStr.o readLn.o
+	gcc -g -Wall -o hexConvert main.o hexToInt.o writeStr.o readLn.o
 
 writeStr.o: writeStr.s
 	gcc -c -g writeStr.s
@@ -7,11 +7,11 @@ writeStr.o: writeStr.s
 readLn.o: readLn.s
 	gcc -c -g readLn.s
 
-lowerCase.o: lowerCase.s
-	gcc -c -g lowerCase.s
+hexToInt.o: hexToInt.s
+	gcc -c -g hexToInt.s
 
-toLower.o: toLower.s
-	gcc -c -g toLower.s
+main.o: main.c
+	gcc -g -Wall -c -o main.o main.c
 
 clean:
 	rm *.o
