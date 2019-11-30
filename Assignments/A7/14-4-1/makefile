@@ -1,5 +1,5 @@
 hexConvert: main.o hexToInt.o
-	gcc -g -Wall -o hexConvert main.o hexToInt.o writeStr.o readLn.o
+	gcc -g -Wall -o hexConvert hexToInt.o writeStr.o readLn.o main.o
 
 hexToInt.o: hexToInt.s
 	gcc -c -g hexToInt.s
