@@ -1,5 +1,11 @@
-reverseArray: reverseArray.o getDecInt.o newLine.o putDecInt.o writeStr.o
-	gcc -g -o reverseArray reverseArray.o getDecInt.o newLine.o putDecInt.o writeStr.o
+reverseArray: reverseArray.o getDecInt.o newLine.o putDecInt.o writeStr.o uDecToInt.o uIntToDec.o
+	gcc -g -o reverseArray reverseArray.o getDecInt.o newLine.o putDecInt.o writeStr.o uDecToInt.o uIntToDec.o
+
+uDecToInt.o: uDecToInt.s
+	gcc -c -g uDecToInt.s
+
+uIntToDec.o: uIntToDec.s
+	gcc -c -g uIntToDec.s
 
 getDecInt.o: getDecInt.s
 	gcc -c -g getDecInt.s
