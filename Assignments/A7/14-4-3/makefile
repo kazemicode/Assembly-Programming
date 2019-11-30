@@ -10,8 +10,8 @@ readLn.o: readLn.s
 hexToInt.o: hexToInt.s
 	gcc -c -g hexToInt.s
 
-main.o: main.c
-	gcc -g -Wall -c -o main.o main.c
+main.o: main.s
+	gcc -c -g main.s
 
 clean:
 	rm *.o
