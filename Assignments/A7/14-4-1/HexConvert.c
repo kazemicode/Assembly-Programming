@@ -1,6 +1,7 @@
-/* main.c
+/* hexConvert.c
  * Prompts user for hex number and converts
  * it to an int.
+ * 2017-09-29: Bob Plantz
  */
 
 #include <stdio.h>
