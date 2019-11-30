@@ -4,7 +4,7 @@
  */
 
 #include <stdio.h>
-
+#include "hexToInt.h"
 int writeStr(char *);
 int readLn(char *, int);
 
