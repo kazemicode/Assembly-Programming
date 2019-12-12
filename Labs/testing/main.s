@@ -60,5 +60,6 @@ bl bar
 add r3, r3, #1  @ increment counter variable
 b loop
 
+done:
 sub sp, fp, #4
 pop {fp, pc}
