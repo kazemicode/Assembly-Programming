@@ -39,7 +39,7 @@ bl scanf @ sp contain the input
 @ inp stored in r4
 ldr r4, [sp]
 
-mov r10, =#10000  @ used for mod10 for isolating digits
+ldr r10, =#10000  @ used for mod10 for isolating digits
 
 
 @ cmp r3, r5    @ check if we've iterated 5 times
