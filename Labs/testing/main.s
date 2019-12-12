@@ -17,6 +17,7 @@ input: .asciz "%d"
 @ r7 has the current digit to convert to barcode
 @ r10 has mod value to extract each digit
 @ r1 will have the barcode equivalent of the current digit
+@ r2 has divisor 10 to change mod amount
 
 main:
 push {fp, lr}
@@ -35,6 +36,7 @@ bl scanf @ sp contain the input
 @ inp stored in r4
 ldr r4, [sp]
 ldr r10, =#10000  @ used for mod for isolating digits
+mov r2, #10
 
 loop:
 cmp r10, #1    @ check if we've iterated over all digits
@@ -45,7 +47,7 @@ udiv r7, r4, r10  @ 95823 / 10000 = 9
 mul r8, r7, r10 @ amount to subtract to get remainder 5823 ( 9 * 1000 = 9000)
 sub r6, r4, r8  @ 95823 - 90000 = 5823
 
-udiv r10, r10, #10  @ move to next mod for next digit
+udiv r10, r10, r2  @ move to next mod for next digit
 
 bl bar          @ convert current digit to barcode equivalent
 b loop          @ check loop condition again
