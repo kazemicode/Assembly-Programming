@@ -17,12 +17,8 @@ input: .asciz "%d"
 @ r7 has the current digit to convert to barcode
 @ r10 has mod value to extract each digit
 @ r1 will have the barcode equivalent of the current digit
-@ r5 will be our limit for iterating on 5 digits
-@ r3 will be our counter variable to keep track of iterations
-
 
 main:
-
 push {fp, lr}
 add fp, sp, #4
 @ print prompt for user
@@ -38,24 +34,23 @@ bl scanf @ sp contain the input
 
 @ inp stored in r4
 ldr r4, [sp]
+ldr r10, =#10000  @ used for mod for isolating digits
 
-ldr r10, =#10000  @ used for mod10 for isolating digits
+loop:
+cmp r10, #1    @ check if we've iterated over all digits
+beq done       @ if yes, we're done
 
-
-@ cmp r3, r5    @ check if we've iterated 5 times
-@ beq done      @ if yes, we're done
-
-@ MOD10 to isolate digits
+@ MOD to isolate digits
 udiv r7, r4, r10  @ 95823 / 10000 = 9
 mul r8, r7, r10 @ amount to subtract to get remainder 5823 ( 9 * 1000 = 9000)
 sub r6, r4, r8  @ 95823 - 90000 = 5823
 
-@ sub r3, r3, #1  @ increment counter variable
+udiv r10, r10, #10  @ move to next mod for next digit
 
 bl bar          @ convert current digit to barcode equivalent
+b loop          @ check loop condition again
 
 
-
-
+done:
 sub sp, fp, #4
 pop {fp, pc}
