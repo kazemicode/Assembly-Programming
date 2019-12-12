@@ -21,7 +21,7 @@ framebar: .asciz "|"
 @ r10 has mod value to extract each digit
 @ r1 will have the barcode equivalent of the current digit
 @ r2 has divisor 10 to change mod amount
-@ r3 keep track of sum of all digits
+@ r9 keep track of sum of all digits
 
 main:
 push {fp, lr}
@@ -55,25 +55,21 @@ udiv  r7, r4, r10 @ 95823 / 10000 = 9
 mul   r8, r7, r10 @ amount to subtract to get remainder 5823 ( 9 * 1000 = 9000)
 sub   r4, r4, r8  @ 95823 - 90000 = 5823
 
-add r3, r7, r3  @ sum together digits
-@@@@@
-ldr r0, =input
-mov r1, r3
-bl printf
+add r9, r7, r9  @ sum together digits
 
 udiv r10, r10, r2  @ move to next mod for next digit
 
 bl bar          @ convert current digit to barcode equivalent
-@b loop          @ check loop condition again
+b loop          @ check loop condition again
 
 
 done:
 @ get check digit bar
 mov r10, #10
-udiv  r4, r3, r10 @ 19 / 10 = 1
+udiv  r4, r9, r10 @ 19 / 10 = 1
 mul   r8, r4, r10 @ amount to subtract to get remainder  ( 1 * 10 = 10)
-sub   r3, r3, r8  @ 19 - 10 = 9
-mov r3, r7 @ for use with bar function
+sub   r9, r9, r8  @ 19 - 10 = 9
+mov r7, r9 @ for use with bar function
 bl bar
 
 @ print right framebar
