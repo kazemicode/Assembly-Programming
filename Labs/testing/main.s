@@ -39,7 +39,7 @@ ldr r4, [sp]
 ldr r10, =#10000  @ used for mod for isolating digits
 mov r2, #10
 
-@loop:
+loop:
 cmp r10, #1    @ check if we've iterated over all digits
 beq done       @ if yes, we're done
 
