@@ -40,8 +40,8 @@ ldr r10, =#10000  @ used for mod for isolating digits
 mov r2, #10
 
 @loop:
-@cmp r10, #1    @ check if we've iterated over all digits
-@beq done       @ if yes, we're done
+cmp r10, #1    @ check if we've iterated over all digits
+beq done       @ if yes, we're done
 
 @ MOD to isolate digits
 udiv  r7, r4, r10 @ 95823 / 10000 = 9
@@ -51,7 +51,7 @@ sub   r4, r4, r8  @ 95823 - 90000 = 5823
 udiv r10, r10, r2  @ move to next mod for next digit
 
 bl bar          @ convert current digit to barcode equivalent
-@b loop          @ check loop condition again
+b loop          @ check loop condition again
 
 
 done:
