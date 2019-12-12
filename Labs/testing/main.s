@@ -64,7 +64,7 @@ bl printf
 udiv r10, r10, r2  @ move to next mod for next digit
 
 bl bar          @ convert current digit to barcode equivalent
-b loop          @ check loop condition again
+@b loop          @ check loop condition again
 
 
 done:
