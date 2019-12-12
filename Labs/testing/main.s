@@ -65,8 +65,9 @@ b loop          @ check loop condition again
 
 done:
 @ get check digit bar
-udiv  r4, r3, #10 @ 19 / 10 = 1
-mul   r8, r4, #10 @ amount to subtract to get remainder  ( 1 * 10 = 10)
+mov r10, #10
+udiv  r4, r3, r10 @ 19 / 10 = 1
+mul   r8, r4, r10 @ amount to subtract to get remainder  ( 1 * 10 = 10)
 sub   r3, r3, r8  @ 19 - 10 = 9
 mov r3, r7 @ for use with bar function
 bl bar
