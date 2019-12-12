@@ -44,7 +44,6 @@ ldr r10, =#10000  @ used for mod for isolating digits
 @ print left framebar
 ldr r0, =framebar
 bl printf
-mov r3, #0
 
 loop:
 mov r2, #10
@@ -57,6 +56,9 @@ mul   r8, r7, r10 @ amount to subtract to get remainder 5823 ( 9 * 1000 = 9000)
 sub   r4, r4, r8  @ 95823 - 90000 = 5823
 
 add r3, r7, r3  @ sum together digits
+@@@@@
+mov r0, r3
+bl printf
 
 udiv r10, r10, r2  @ move to next mod for next digit
 
