@@ -46,6 +46,7 @@ ldr r0, =framebar
 bl printf
 
 loop:
+mov r3, #0
 mov r2, #10
 cmp r10, #0    @ check if we've iterated over all digits
 beq done       @ if yes, we're done
@@ -55,7 +56,7 @@ udiv  r7, r4, r10 @ 95823 / 10000 = 9
 mul   r8, r7, r10 @ amount to subtract to get remainder 5823 ( 9 * 1000 = 9000)
 sub   r4, r4, r8  @ 95823 - 90000 = 5823
 
-add r3, r3, r7  @ sum together digits
+add r3, r7, r3  @ sum together digits
 
 udiv r10, r10, r2  @ move to next mod for next digit
 
