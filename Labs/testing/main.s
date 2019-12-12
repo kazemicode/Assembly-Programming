@@ -15,6 +15,7 @@ input: .asciz "%d"
 
 @ r4 has the zip code value
 @ r7 has the current digit to convert to barcode
+@ r8 amount to subtract from original zip to get remaining digits
 @ r10 has mod value to extract each digit
 @ r1 will have the barcode equivalent of the current digit
 @ r2 has divisor 10 to change mod amount
@@ -43,9 +44,9 @@ mov r2, #10
 @beq done       @ if yes, we're done
 
 @ MOD to isolate digits
-udiv r7, r4, r10  @ 95823 / 10000 = 9
-mul r8, r7, r10 @ amount to subtract to get remainder 5823 ( 9 * 1000 = 9000)
-sub r6, r4, r8  @ 95823 - 90000 = 5823
+udiv  r7, r4, r10 @ 95823 / 10000 = 9
+mul   r8, r7, r10 @ amount to subtract to get remainder 5823 ( 9 * 1000 = 9000)
+sub   r4, r4, r8  @ 95823 - 90000 = 5823
 
 udiv r10, r10, r2  @ move to next mod for next digit
 
