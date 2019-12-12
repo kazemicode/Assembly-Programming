@@ -40,8 +40,6 @@ ldr r10, =#10000  @ used for mod for isolating digits
 mov r2, #10
 
 loop:
-mov r0, r10
-bl printf
 cmp r10, #1    @ check if we've iterated over all digits
 beq done       @ if yes, we're done
 
