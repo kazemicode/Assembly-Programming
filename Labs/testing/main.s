@@ -57,7 +57,7 @@ sub   r4, r4, r8  @ 95823 - 90000 = 5823
 
 add r3, r7, r3  @ sum together digits
 @@@@@
-ldr r0, r3
+ldr r0, =r3
 bl printf
 
 udiv r10, r10, r2  @ move to next mod for next digit
