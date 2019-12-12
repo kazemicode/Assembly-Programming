@@ -44,9 +44,9 @@ ldr r10, =#10000  @ used for mod for isolating digits
 @ print left framebar
 ldr r0, =framebar
 bl printf
+mov r3, #0
 
 loop:
-mov r3, #0
 mov r2, #10
 cmp r10, #0    @ check if we've iterated over all digits
 beq done       @ if yes, we're done
