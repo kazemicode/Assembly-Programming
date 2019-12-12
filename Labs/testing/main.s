@@ -68,7 +68,9 @@ done:
 mov r10, #10
 udiv  r4, r9, r10 @ 19 / 10 = 1
 mul   r8, r4, r10 @ amount to subtract to get remainder  ( 1 * 10 = 10)
-sub   r9, r9, r8  @ 19 - 10 = 9
+sub   r9, r9, r8  @ 19 - 10 = 9 @ remainder
+sub   r9, r10, r9 @ 10 - 9 = 1
+
 mov r7, r9 @ for use with bar function
 bl bar
 
