@@ -1,5 +1,5 @@
 final: main.o bar.o
-	gcc -o midterm main.o bar.o
+	gcc -o final main.o bar.o
 
 main.o: main.s
 	gcc -c -g main.s
