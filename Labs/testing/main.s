@@ -5,6 +5,7 @@
 .data
 prompt: .asciz "Enter a 5 digit zip code: "
 input: .asciz "%d"
+newLine: .asciz "\n"
 
 @ Program code
 .text
@@ -40,7 +41,7 @@ ldr r10, =#10000  @ used for mod for isolating digits
 
 loop:
 mov r2, #10
-cmp r10, #1    @ check if we've iterated over all digits
+cmp r10, #0    @ check if we've iterated over all digits
 beq done       @ if yes, we're done
 
 @ MOD to isolate digits
@@ -55,5 +56,8 @@ b loop          @ check loop condition again
 
 
 done:
+ldr r0, =newLine
+bl printf
+
 sub sp, fp, #4
 pop {fp, pc}
