@@ -39,20 +39,18 @@ bl scanf @ sp contain the input
 @ inp stored in r4
 ldr r4, [sp]
 
-mov r10, #10000  @ used for mod10 for isolating digits
+mov r10, =#10000  @ used for mod10 for isolating digits
 
 
-
-
-@cmp r3, r5    @ check if we've iterated 5 times
-@beq done      @ if yes, we're done
+@ cmp r3, r5    @ check if we've iterated 5 times
+@ beq done      @ if yes, we're done
 
 @ MOD10 to isolate digits
 udiv r7, r4, r10  @ 95823 / 10000 = 9
 mul r8, r7, r10 @ amount to subtract to get remainder 5823 ( 9 * 1000 = 9000)
 sub r6, r4, r8  @ 95823 - 90000 = 5823
 
-@sub r3, r3, #1  @ increment counter variable
+@ sub r3, r3, #1  @ increment counter variable
 
 bl bar          @ convert current digit to barcode equivalent
 
