@@ -22,7 +22,6 @@ nine:   .asciz "|:|::"
 .type bar, %function
 
 bar:
-
 push {fp, lr}
 add fp, sp, #4
 
