@@ -14,7 +14,7 @@ input: .asciz "%d"
 
 
 @ r4 has the zip code value
-@ r6 has the current digit to convert to barcode
+@ r7 has the current digit to convert to barcode
 @ r10 has mod value to extract each digit
 @ r1 will have the barcode equivalent of the current digit
 @ r5 will be our limit for iterating on 5 digits
@@ -39,28 +39,25 @@ bl scanf @ sp contain the input
 @ inp stored in r4
 ldr r4, [sp]
 
-mov r10, #10  @ used for mod10 for isolating digits
-mov r5, #4    @ loop limit to iterate through 5 digits
-mov r3, #0    @ counter variable for loop
+mov r10, #10000  @ used for mod10 for isolating digits
 
 
 
-@loop:
-cmp r3, r5    @ check if we've iterated 5 times
-beq done      @ if yes, we're done
+
+@cmp r3, r5    @ check if we've iterated 5 times
+@beq done      @ if yes, we're done
 
 @ MOD10 to isolate digits
-mul r1, r1, r10
-udiv r7, r4, r10  @ 12345 / 10 = 1234
-mul r8, r7, r10 @ amount to subtract to get remainder 12340
-sub r6, r4, r8  @ 12345 - 12340 = 5
+udiv r7, r4, r10  @ 95823 / 10000 = 9
+mul r8, r7, r10 @ amount to subtract to get remainder 5823 ( 9 * 1000 = 9000)
+sub r6, r4, r8  @ 95823 - 90000 = 5823
 
-add r3, r3, #1  @ increment counter variable
+@sub r3, r3, #1  @ increment counter variable
 
 bl bar          @ convert current digit to barcode equivalent
 
-@b loop          @ check loop condition again
 
-done:
+
+
 sub sp, fp, #4
 pop {fp, pc}

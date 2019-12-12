@@ -28,41 +28,41 @@ add fp, sp, #4
 
 
 @ r4 has the zip code value
-@ r6 has the current digit to convert to barcode
+@ r7 has the current digit to convert to barcode
 @ r10 has mod value to extract each digit
 @ r1 will have the barcode equivalent of the current digit
 @ r5 will be our limit for iterating on 5 digits
 @ r3 will be our counter variable to keep track of iterations
 
 
-cmp r6, 0
+cmp r7, 0
 ldreq r0, =zero
 
-cmp r6, 1
+cmp r7, 1
 ldreq r0, =one
 
-cmp r6, 2
+cmp r7, 2
 ldreq r0, =two
 
-cmp r6, 3
+cmp r7, 3
 ldreq r0, =three
 
-cmp r6, 4
+cmp r7, 4
 ldreq r0, =four
 
-cmp r6, 5
+cmp r7, 5
 ldreq r0, =five
 
-cmp r6, 6
+cmp r7, 6
 ldreq r0, =six
 
-cmp r6, 7
+cmp r7, 7
 ldreq r0, =seven
 
-cmp r6, 8
+cmp r7, 8
 ldreq r0, =eight
 
-cmp r6, 9
+cmp r7, 9
 ldreq r0, =nine
 
 
