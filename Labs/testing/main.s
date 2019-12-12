@@ -6,6 +6,7 @@
 prompt: .asciz "Enter a 5 digit zip code: "
 input: .asciz "%d"
 newLine: .asciz "\n"
+framebar: .asciz "|"
 
 @ Program code
 .text
@@ -39,6 +40,10 @@ bl scanf @ sp contain the input
 ldr r4, [sp]
 ldr r10, =#10000  @ used for mod for isolating digits
 
+@ print left framebar
+ldr r0, =framebar
+bl printf
+
 loop:
 mov r2, #10
 cmp r10, #0    @ check if we've iterated over all digits
@@ -56,6 +61,11 @@ b loop          @ check loop condition again
 
 
 done:
+@ print right framebar
+ldr r0, =framebar
+bl printf
+
+@ print newline for neatness
 ldr r0, =newLine
 bl printf
 
