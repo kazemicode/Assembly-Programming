@@ -57,7 +57,7 @@ sub   r4, r4, r8  @ 95823 - 90000 = 5823
 
 add r3, r7, r3  @ sum together digits
 @@@@@
-mov r0, =input
+ldr r0, =input
 mov r1, r3
 bl printf
 
