@@ -43,22 +43,23 @@ mov r10, #10  @ used for mod10 for isolating digits
 mov r5, #4    @ loop limit to iterate through 5 digits
 mov r3, #0    @ counter variable for loop
 
-b loop
 
-loop:
+
+@loop:
 cmp r3, r5    @ check if we've iterated 5 times
 beq done      @ if yes, we're done
 
 @ MOD10 to isolate digits
 mul r1, r1, r10
-udiv r7, r4, r10 @ 12345 / 10 = 1234
+udiv r7, r4, r10  @ 12345 / 10 = 1234
 mul r8, r7, r10 @ amount to subtract to get remainder 12340
-sub r6, r4, r8 @ 12345 - 12340 = 5
-
-bl bar
+sub r6, r4, r8  @ 12345 - 12340 = 5
 
 add r3, r3, #1  @ increment counter variable
-b loop
+
+bl bar          @ convert current digit to barcode equivalent
+
+@b loop          @ check loop condition again
 
 done:
 sub sp, fp, #4
