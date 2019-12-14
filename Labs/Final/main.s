@@ -1,3 +1,6 @@
+@ CSCI 212
+@ Sara Kazemi
+
 @ Define my Raspberry pi
 .cpu cortex-a53
 .fpu neon-fp-armv8

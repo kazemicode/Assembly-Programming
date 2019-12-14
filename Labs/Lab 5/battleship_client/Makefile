@@ -1,5 +1,5 @@
-battleship_client: battleship.o init.o mapij.o displayBoard.o placeShip.o isGameOver.o reset_packet.o makeMove.o encode.o decode.o startClient.o startServer.o check_move.o check_sunk.o
-	gcc -o battleship_client makeMove.o reset_packet.o isGameOver.o placeShip.o battleship.o init.o mapij.o displayBoard.o encode.o decode.o startClient.o startServer.o check_move.o check_sunk.o -lwiringPi -lm 
+battleship_client: battleship_client.o init.o mapij.o displayBoard.o placeShip.o isGameOver.o reset_packet.o makeMove.o encode.o decode.o startClient.o startServer.o check_move.o check_sunk.o update_guessboard.o
+	gcc -o battleship_client makeMove.o reset_packet.o isGameOver.o placeShip.o battleship_client.o init.o mapij.o displayBoard.o encode.o decode.o startClient.o startServer.o check_move.o check_sunk.o update_guessboard.o -lwiringPi -lm 
 
 check_sunk.o: check_sunk.s
 	gcc -g -c check_sunk.s
@@ -7,8 +7,8 @@ check_sunk.o: check_sunk.s
 check_move.o: check_move.s
 	gcc -g -c check_move.s
 
-battleship.o: battleship.s
-	gcc -g -c battleship.s
+battleship_client.o: battleship_client.s
+	gcc -g -c battleship_client.s
 
 init.o: init.s
 	gcc -g -c init.s
@@ -42,6 +42,9 @@ startClient.o: startClient.c
 
 startServer.o: startServer.c
 	gcc -g -c startServer.c
+
+update_guessboard.o: update_guessboard.s
+	gcc -g -c update_guessboard.s
 
 clean:
 	rm *.o
